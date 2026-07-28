@@ -18,3 +18,14 @@ let float: number = 3.15;
 let color: string = "blue";
 let fullName: string = "John Doe";
 
+
+//any
+
+// When to use any:
+
+// When migrating JavaScript code to TypeScript
+// When working with dynamic content where the type is unknown
+// When you need to opt out of type checking for a specific case
+
+let input: any;
+input = "test";
