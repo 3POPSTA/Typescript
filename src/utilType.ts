@@ -93,3 +93,38 @@ const nameAgeMap: Record<string,number> = {
 }
 type UserRole = 'admin' | 'user' | 'guest'
 type Permissions = Record<UserRole, string[]>
+
+
+//ReturnType
+//ReturnType extracts the return type of a function type.
+type PointeGen = () => {
+    x: number;
+    y:number;
+}
+const point: ReturnType<PointeGen> = {
+    x:10,
+    y:20
+}
+
+
+//Parameters
+//Parameters extracts the parameter types of a function type as an array.
+
+type PointPrinter = (p:{x:number;y:number}) => void;
+
+const points: Parameters<PointPrinter>[0] = {
+    x:10,
+    y:20
+}
+
+
+//Readonly
+interface Person {
+  name: string;
+  age: number;
+}
+const person: Readonly<Person> = {
+  name: "Dylan",
+  age: 35,
+};
+//person.name = 'Israel';
