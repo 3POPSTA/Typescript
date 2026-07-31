@@ -68,3 +68,28 @@ let p: Partial<individual> = {
 console.log(p.id)
 console.log(p.name)
 
+
+
+//Required
+//Required changes all the properties in an object to be required.
+
+interface Car {
+    make:string;
+    model:string;
+    mileage?: number;
+}
+let myCar: Required<Car> = {
+    make: "Ford",
+    model: "Focus",
+    mileage: 1234
+}
+
+
+//Record
+//Record is a shortcut to defining an object type with a specific key type and value type.
+const nameAgeMap: Record<string,number> = {
+    "Alice" : 21,
+    "Bob" : 25
+}
+type UserRole = 'admin' | 'user' | 'guest'
+type Permissions = Record<UserRole, string[]>
