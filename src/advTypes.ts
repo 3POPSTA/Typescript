@@ -39,3 +39,22 @@ type Concrete<T> = {
 type ReadonlyRequired<T> = {
   +readonly [K in keyof T]-?: T[K];
 };
+
+
+
+// Add prefix to all property names
+type Getters<T> = {
+  [K in keyof T as `get${Capitalize<string & K>}`]: () => T[K];
+};
+
+type UserGetters = Getters<User>;
+// {
+//   getId: () => number;
+//   getName: () => string;
+//   getEmail: () => string;
+// }
+
+// Filter out properties
+type MethodsOnly<T> = {
+  [K in keyof T as T[K] extends Function ? K : never]: T[K];
+};
