@@ -58,3 +58,14 @@ type UserGetters = Getters<User>;
 type MethodsOnly<T> = {
   [K in keyof T as T[K] extends Function ? K : never]: T[K];
 };
+
+type IsString<T> = T extends string ? true : false;
+
+type A = IsString<string>;    // true
+type B = IsString<number>;    // false
+type C = IsString<'hello'>;    // true
+type D = IsString<string | number>; // boolean
+
+// Extract array element type
+type ArrayElement<T> = T extends (infer U)[] ? U : never;
+type Numbers = ArrayElement<number[]>; // number
