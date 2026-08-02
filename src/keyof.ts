@@ -1,5 +1,26 @@
 //keyof
 //keyof is a keyword in TypeScript which is used to extract the key type from an object type.
+//Basic Usage
+
+interface User {
+    name:string;
+    age:number;
+    email:string;
+}
+const alice: User = {
+    name: "Alice",
+    age:12,
+    email: "alice@gmail.com"
+}
+
+type UserKeys = keyof User;
+
+function getProperty(obj:User,key:UserKeys){
+    return obj[key]
+}
+
+console.log(getProperty(alice,"name"));
+
 
 interface Person {
     name:string;
