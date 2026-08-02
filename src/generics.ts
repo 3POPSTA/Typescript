@@ -7,6 +7,10 @@ function createPair<S,N>(v1:S,v2:N): [S,N] {
 }
 console.log(createPair<string,number>("hello",23));
 
+function arr<S>(str:S):S {
+    return str
+}
+arr<string>("hello")
 
 //Generic Classes
 class NameValue<T>{
