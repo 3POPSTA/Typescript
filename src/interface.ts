@@ -30,7 +30,7 @@ interface Add {
 }
 const add: Add = (a,b) => a + b;
 
-//interface
+//interface of class
 interface Animal{
     makeSound():void;
 }

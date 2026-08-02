@@ -17,3 +17,6 @@ const graph: [x:number, y:number] = [12,45];
 
 const points: [number,number] = [12,34];
 const [x,y] = points;
+
+type Turples = [ string,number,string,]
+let list: Turples = ["he",12,"te"]
