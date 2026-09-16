@@ -51,3 +51,13 @@ const wrappedValue: Wrapped<number> = {value:10};
 const wrappedValue2 : Wrapped<string> = {value:"1234567890"};
  console.log(wrappedValue);
  console.log(wrappedValue2);
+
+
+class Variable<T>{
+    constructor(public value:T){}
+
+    displayValue(): void{
+        console.log(this.value);
+    }
+}
+let value1 = new Variable<string>("hi")
