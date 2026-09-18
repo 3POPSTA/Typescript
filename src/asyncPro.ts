@@ -1,80 +1,67 @@
-//TypeScript Async Programming
-//callbacks
-function greet(callback:()=> void){
-    console.log("Hello")
-    callback();
-}
-greet(function(){
-    console.log("Welcome");
-})
-
-//promises
-const promise = new Promise<string>((resolve,reject)=>{
-    resolve("Success");
-});
-promise.then((result)=>{
-    console.log(result);
-})
-
-//Promise Type
-function getName(): Promise<string> {
-    return Promise.resolve("John");
-}
-function getAge():Promise<number>{
-    return Promise.resolve(22);
+//Basic Async
+async function getGreeting(): Promise<string> {
+    return "Hello Typescript";
 }
 
-// Define types for our API response
-interface User {
-  id: number;
-  name: string;
-  email: string;
-  role: 'admin' | 'user' | 'guest';
+async function run(){
+    const greeting = await getGreeting();
+    console.log(greeting)
 }
 
-// Function that returns a Promise of User array
-async function fetchUsers(): Promise<User[]> {
-  console.log('Fetching users...');
-  // Simulate API call
-  await new Promise(resolve => setTimeout(resolve, 1000));
-  return [
-    { id: 1, name: 'Alice', email: 'alice@example.com', role: 'admin' },
-    { id: 2, name: 'Bob', email: 'bob@example.com', role: 'user' }
-  ];
+
+//Error Handling
+// async function fetchEmployees(): Promise<string>{
+//     try{
+//         const response = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+//         if(!response.ok){
+//             throw new Error(`HTTP error! Status: ${response.status}`)
+//         }
+//         const data = await response.json();
+//         return data;
+//     }
+//     catch(error){
+//         if(error instanceof Error){
+//             console.error("Fetch Failed",error.message);
+//             return error.message;
+//         }
+//         return "An unknown error occurred.";
+
+//     }
+// }
+
+
+// async function getData(){
+//     const data = await fetchEmployees();
+//     console.log(data);
+// }
+// getData()
+
+//create a promise
+async function fetchUsers(): Promise<User> {
+//fetch data from the API endpoint
+    const userData = await fetch("https://dummyjson.com/users/3")
+//read the response body and convert to js object
+    const data = await userData.json()
+//return data 
+    return data;
 }
 
-// Async function to process users
-async function processUsers() {
-  try {
-    // TypeScript knows users is User[]
-    const users = await fetchUsers();
-    console.log(`Fetched ${users.length} users`);
+type User = {
+    id: number;
+    firstName: string;
+    lastName: string;
+    age: number;
+    email: string;
+};
 
-    // Type-safe property access
-    const adminEmails = users
-      .filter(user => user.role === 'admin')
-      .map(user => user.email);
-
-    console.log('Admin emails:', adminEmails);
-    return users;
-  } catch (error) {
-    if (error instanceof Error) {
-      console.error('Failed to process users:', error.message);
-    } else {
-      console.error('An unknown error occurred');
+//create another asynchronous function
+async function getUsers(){
+    try{
+        const users = await fetchUsers();
+        console.log(users.id)
     }
-    throw error; // Re-throw to let caller handle
-  }
+    catch(error){
+        console.log("Error",error)
+    }
 }
-
-// Execute the async function
-processUsers()
-  .then(users => console.log('Processing complete'))
-  .catch(err => console.error('Processing failed:', err));
-
-
-
-
-
-
-
+getUsers()
