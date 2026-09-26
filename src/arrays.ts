@@ -22,3 +22,8 @@ const texts: readonly string[] = ["mark"];
 
 const numbers = [1,2,3];
 // numbers.push("2")
+
+
+
+
+
