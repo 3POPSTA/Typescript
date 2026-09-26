@@ -18,6 +18,7 @@ const car: Car = {
     type: carType,
     model: carModel
 }
+
 console.log(car.year)
 console.log(car.type)
 console.log(car.model)
