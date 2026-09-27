@@ -18,7 +18,6 @@ type UserKeys = keyof User;
 function getProperty(obj:User,key:UserKeys){
     return obj[key]
 }
-
 console.log(getProperty(alice,"name"));
 
 
