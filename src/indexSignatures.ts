@@ -11,6 +11,7 @@ const love:Person = {
     name: "Ac-lumor Love",
     email: "aclumor@gmail.com"
 }
+
 console.log(love.name);
 
 
