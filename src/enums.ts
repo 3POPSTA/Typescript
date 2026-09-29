@@ -7,6 +7,7 @@ enum CardinalDirections{
     South,
     West
 }
+
 console.log(CardinalDirections.North)
 console.log(CardinalDirections.East)
 console.log(CardinalDirections.South)
@@ -45,6 +46,7 @@ enum CardinalDir{
   S = "South",
   W = "West"
 };
+
 // logs "North"
 console.log(CardinalDir.N);
 // logs "West"
