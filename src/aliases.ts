@@ -8,7 +8,6 @@ type Car = {
     type: CarType,
     model: CarModel,
 }
-
 const carYear: CarYear = 2001;
 const carType: CarType = "Toyota";
 const carModel: CarModel = "Corolla";
@@ -18,7 +17,6 @@ const car: Car = {
     type: carType,
     model: carModel
 }
-
 console.log(car.year)
 console.log(car.type)
 console.log(car.model)
