@@ -14,12 +14,10 @@ interface Person {
     age:number;
     location?:string;
 }
-
 const bob: Pick<Person, "name" | "age"> = {
     name:"Bob",
     age: 12,
 }
-
 console.log(bob)
 console.log(bob.name)
 console.log(bob.age)
