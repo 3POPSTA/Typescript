@@ -1,53 +1,35 @@
-/* 
-    TypeScript Index Signatures allow you to define the type of object properties 
-    when you don't know the property names beforehand.
-*/
-//Basic syntax
+// Index signatures describe object properties with keys known only at runtime.
 interface Person {
-    [key:string]: string;
+  [key: string]: string;
 }
 
-const love:Person = {
-    name: "Ac-lumor Love",
-    email: "aclumor@gmail.com"
+const person: Person = {
+  name: "Ada Lovelace",
+  email: "ada@example.com",
+};
+console.log(person.name);
+
+interface User {
+  id: number;
+  name: string;
+  [key: string]: string | number;
 }
-console.log(love.name);
+const user: User = { id: 1, name: "Mark" };
+console.log(user.name);
 
-
-//Mixed Fixed + Dynamic Properties
-
-interface User{
-    id:number;
-    name:string;
-    
-    [key:string] : string | number;
-}
-const u1 : User = {
-    id: 1,
-    name: "mark"
-}
-console.log(u1.name)
-
-//Number Index Signature
+// Numeric index signatures can describe array-like values.
 interface List {
-    [key:number]: string;
+  [key: number]: string;
 }
-const fruits:List = [
-    "Apple",
-    "Banana",
-    "Orange"
-]
-console.log(fruits[0])
-console.log(fruits[1])
-console.log(fruits[2])
+const fruits: List = ["Apple", "Banana", "Orange"];
+console.log(fruits[0], fruits[1], fruits[2]);
 
-
-//Readyonly Index Signature
+// Readonly index signatures prohibit writes through the typed reference.
 interface ReadOnlyScores {
   readonly [subject: string]: number;
 }
 
 const scores: ReadOnlyScores = {
   math: 90,
-  english: 80
+  english: 80,
 };

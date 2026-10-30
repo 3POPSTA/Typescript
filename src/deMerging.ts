@@ -29,8 +29,7 @@ const person: Person = {
 
 console.log(person);
 
-//Function Overloads with Merging
-// Function overloads
+// Function overloads provide type-specific call signatures.
 function processValue(value: string): string;
 function processValue(value: number): number;
 function processValue(value: boolean): boolean;
@@ -87,7 +86,7 @@ console.log(zipValidator.isValid("abcde")); // false
 
 
 
-//Class and Interface Merging
+// Class and interface declarations can merge.
 // Interface declaration
 interface Cart {
   calculateTotal(): number;
@@ -115,7 +114,7 @@ cart.addItem("Coffee Mug", 8.99);
 console.log(`Total: $${cart.calculateTotal().toFixed(2)}`);
 
 
-//Enum Merging
+// Enum declarations can merge.
 // First part of the enum
 enum Direction {
   North,
@@ -146,38 +145,36 @@ console.log(Direction[0]); // "North"
 console.log(Direction[2]); // "East"
 
 
-//Module Augmentation
-
-// Original library definition
-// Imagine this comes from a third-party library
-declare namespace LibraryModule {
+// Namespace declarations merge, while these implementations provide runtime values.
+namespace LibraryModule {
   export interface User {
     id: number;
     name: string;
   }
-  export function getUser(id: number): User;
+
+  export function getUser(id: number): User {
+    return { id, name: "Ada" };
+  }
 }
 
-// Augmenting with additional functionality (your code)
-declare namespace LibraryModule {
-  // Add new interface
+// A later declaration augments the namespace's types and runtime behavior.
+namespace LibraryModule {
   export interface UserPreferences {
     theme: string;
     notifications: boolean;
   }
 
-  // Add new property to existing interface
   export interface User {
     preferences?: UserPreferences;
   }
 
-  // Add new function
-  export function getUserPreferences(userId: number): UserPreferences;
+  export function getUserPreferences(_userId: number): UserPreferences {
+    return { theme: "light", notifications: true };
+  }
 }
 
-// Using the augmented module
 const user = LibraryModule.getUser(123);
-console.log(user.preferences?.theme);
+console.log(user.name, user.preferences?.theme ?? "No preferences set");
 
 const prefs = LibraryModule.getUserPreferences(123);
 console.log(prefs.notifications);

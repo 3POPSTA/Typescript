@@ -1,29 +1,22 @@
-//Object Types
-const car: {type:string,model:string, year:number} = {
-    type: "Toyota",
-    model: "Corolla",
-    year: 2009
-}
+// Object types describe required and optional properties.
+const car: { type: string; model: string; year: number } = {
+  type: "Toyota",
+  model: "Corolla",
+  year: 2009,
+};
 console.log(car.model);
 
-
-const person: {name:string, age:number, location:string} = {
-    name: "ACLL",
-    age: 23,
-    location: "ghana"
-}
-
-console.log(person.name)
-
-//Option Property
-const truck: {type:string, mileage?:number} = {
-    type: "Toyata",
+const person: { name: string; age: number; location: string } = {
+  name: "Ada",
+  age: 23,
+  location: "Ghana",
 };
+console.log(person.name);
+
+const truck: { type: string; mileage?: number } = { type: "Toyota" };
 truck.mileage = 34;
 
-
-//index signatures
-const nameAgeMap: {[index:string]: number} = {};
+// Index signatures describe dynamic property names.
+const nameAgeMap: Record<string, number> = {};
 nameAgeMap.Jack = 25;
-// nameAgeMap.Mark = "Fifty";
 console.log(nameAgeMap.Jack)

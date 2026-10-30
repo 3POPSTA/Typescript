@@ -1,43 +1,25 @@
-//keyof
-//keyof is a keyword in TypeScript which is used to extract the key type from an object type.
-//Basic Usage
-
+// `keyof` creates a union of an object's property keys.
 interface User {
-    name:string;
-    age:number;
-    email:string;
+  name: string;
+  age: number;
+  email: string;
 }
-const alice: User = {
-    name: "Alice",
-    age:12,
-    email: "alice@gmail.com"
-}
+const alice: User = { name: "Alice", age: 12, email: "alice@example.com" };
 
 type UserKeys = keyof User;
 
-function getProperty(obj:User,key:UserKeys){
-    return obj[key]
+function getProperty<ObjectType, Key extends keyof ObjectType>(
+  object: ObjectType,
+  key: Key,
+): ObjectType[Key] {
+  return object[key];
 }
 
-console.log(getProperty(alice,"name"));
+console.log(getProperty(alice, "name"));
 
+type StringMap = Record<string, unknown>;
+function createStringPair(property: string, value: string): StringMap {
+  return { [property]: value };
+}
 
-interface Person {
-    name:string;
-    age:number;
-}
-function printPersonProperty(person:Person,property:keyof Person){
-    console.log(`Printing person property ${property}: "${person[property]}"`)
-}
-let person = {
-    name: "Max",
-    age:23
-}
-printPersonProperty(person, "name");
-
-
-//keyof with index signatures
-type StringMap = {[key:string]: unknown};
-function  createStringPair(property:keyof StringMap,value:string):StringMap{
-    return {[property]:value}
-}
+console.log(createStringPair("language", "TypeScript"));

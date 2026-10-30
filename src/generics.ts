@@ -1,63 +1,54 @@
-//Generics
-
-//Generic Functions
-
-function createPair<S,N>(v1:S,v2:N): [S,N] {
-    return [v1,v2];
+// Generic functions preserve the relationship between input and output types.
+function createPair<First, Second>(first: First, second: Second): [First, Second] {
+  return [first, second];
 }
-console.log(createPair<string,number>("hello",23));
+console.log(createPair("hello", 23));
 
-function arr<S>(str:S):S {
-    return str
+function identity<Value>(value: Value): Value {
+  return value;
 }
-arr<string>("hello")
+console.log(identity("hello"));
 
-//Generic Classes
-class NameValue<T>{
-    private _value: T | undefined;
+class NameValue<Value> {
+  private value: Value | undefined;
 
-    constructor(private name: string){}
+  constructor(private readonly name: string) {}
 
-    public setValue(value:T){
-        this._value = value;
-    }
+  setValue(value: Value): void {
+    this.value = value;
+  }
 
-    public getValue(): T | undefined{
-        return this._value;
-    }
-    public toSting(): string{
-        return `${this.name}: ${this._value}`;
-    }
+  getValue(): Value | undefined {
+    return this.value;
+  }
+
+  toString(): string {
+    return `${this.name}: ${this.value ?? "unset"}`;
+  }
 }
-let value = new NameValue<number>("myNumber");
-value.setValue(10);
-console.log(value.toString());
+const namedValue = new NameValue("myNumber");
+namedValue.setValue(10);
+console.log(namedValue.toString());
 
-
-//simple Generics
-function getFirstElement<ElementType>(array: ElementType[]){
-    return array[0];
+function getFirstElement<ElementType>(array: readonly ElementType[]): ElementType | undefined {
+  return array[0];
 }
 const numbers = [1,2,3];
-const firstNum = getFirstElement<number>(numbers)
-
+const firstNum = getFirstElement(numbers);
 const strings = ["name","age"];
-const firstStr = getFirstElement<string>(strings);
+const firstStr = getFirstElement(strings);
+console.log(firstNum, firstStr);
 
+type Wrapped<Value> = { value: Value };
+const wrappedNumber: Wrapped<number> = { value: 10 };
+const wrappedString: Wrapped<string> = { value: "1234567890" };
+console.log(wrappedNumber, wrappedString);
 
-//type Aliases
-type Wrapped<Type> = {value:Type};
-const wrappedValue: Wrapped<number> = {value:10};
-const wrappedValue2 : Wrapped<string> = {value:"1234567890"};
- console.log(wrappedValue);
- console.log(wrappedValue2);
+class Variable<Value> {
+  constructor(public value: Value) {}
 
-
-class Variable<T>{
-    constructor(public value:T){}
-
-    displayValue(): void{
-        console.log(this.value);
-    }
+  displayValue(): void {
+    console.log(this.value);
+  }
 }
-let value1 = new Variable<string>("hi")
+new Variable("hi").displayValue();

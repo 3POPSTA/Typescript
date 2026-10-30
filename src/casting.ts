@@ -1,10 +1,10 @@
-//casting
+// Type assertions describe a type to the compiler; they do not convert values.
 
-//casting with as
-let x: unknown = "mark";
-console.log((x as string).length);
+const firstValue: unknown = "mark";
+if (typeof firstValue === "string") {
+  console.log(firstValue.length);
+}
 
-
-//casting with <>
-let y: unknown = "zuck";
-console.log((<string>y).length);
+// The `as` syntax is the preferred assertion style in TypeScript.
+const secondValue: unknown = "zuck";
+console.log((secondValue as string).length);

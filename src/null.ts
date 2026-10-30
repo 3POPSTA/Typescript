@@ -1,28 +1,25 @@
-//Null
-let value:string | undefined | null = null;
+// Union types can represent values that may be absent.
+let value: string | null | undefined = null;
 value = "Hello";
 console.log(value);
 value = undefined;
 console.log(value)
 
-//Optional Chaining
-interface House{
+interface House {
+  sqft: number;
+  yard?: {
     sqft: number;
-    yard?: {
-        sqft:number;
-    }
+  };
 }
 
-function  printYardSize(house:House){
-    const yardSize = house.yard?.sqft;
-    if(yardSize === undefined){
-        console.log("No yard");
-    }
-    else{
-        console.log(`Yard is ${yardSize} sqft`);
-    }
+function printYardSize(house: House): void {
+  const yardSize = house.yard?.sqft;
+  if (yardSize === undefined) {
+    console.log("No yard");
+  } else {
+    console.log(`Yard is ${yardSize} sqft`);
+  }
 }
-let home:House = {
-    sqft:500
-};
+
+const home: House = { sqft: 500 };
 printYardSize(home);

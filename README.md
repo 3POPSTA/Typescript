@@ -19,7 +19,7 @@ npm install
 Compile the TypeScript files:
 
 ```sh
-npx tsc
+npm run build
 ```
 
 The compiler reads `tsconfig.json` and writes JavaScript, declaration files, and source maps to `build/`.
@@ -35,7 +35,7 @@ You can substitute another compiled filename, such as `functions.js` or `generic
 To check types without generating build output:
 
 ```sh
-npx tsc --noEmit
+npm run typecheck
 ```
 
 ## Topics
@@ -49,9 +49,9 @@ npx tsc --noEmit
 | `callbacks.ts` | Function values and callback parameters |
 | `casting.ts` | Type assertions |
 | `classes.ts` | Classes, access modifiers, inheritance, and abstract classes |
-| `deMerging.ts` | Declaration merging, overloads, and namespace augmentation |
+| `deMerging.ts` | Declaration merging, function overloads, and namespace merging |
 | `enums.ts` | Numeric and string enums |
-| `errorhandling.ts` | `any` and `unknown` errors; custom error classes |
+| `errorhandling.ts` | Narrowing unknown errors and custom error classes |
 | `functions.ts` | Return types, parameters, optional/default parameters, and rest parameters |
 | `generics.ts` | Generic functions, classes, and aliases |
 | `indexSignatures.ts` | String and number index signatures |
@@ -62,9 +62,9 @@ npx tsc --noEmit
 | `null.ts` | Nullable values and optional chaining |
 | `objectTypes.ts` | Object shapes, optional properties, and index signatures |
 | `promise.ts` | Promises and handling asynchronous results |
-| `turples.ts` | Tuples, readonly and named tuples, and destructuring |
+| `tuples.ts` | Tuples, readonly and named tuples, and destructuring |
 | `type.ts` | Type aliases, unions, intersections, and function types |
-| `types.ts` | Primitive types and `any` |
+| `types.ts` | Primitive types and narrowing `unknown` values |
 | `utilType.ts` | Utility types including `Pick`, `Omit`, `Partial`, `Required`, and `Record` |
 
 These are illustrative snippets, not a production library. Some files contain commented-out examples, and running a compiled file may print output or perform the actions shown in that example.

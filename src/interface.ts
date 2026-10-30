@@ -1,42 +1,37 @@
-//interface
-//interface keyword is used to define the shape of an object.
-
+// Interfaces describe the shape of objects.
 interface User {
-    name:string;
-    age:number;
+  name: string;
+  age: number;
 }
 
 const user: User = {
-    name: "ACLL",
-    age:12345,
-}
+  name: "Ada",
+  age: 36,
+};
 
-//Extending an interface
 interface Person {
-    name:string;
+  name: string;
 }
 
-interface Employee extends Person{
-    salary:number;
+interface Employee extends Person {
+  salary: number;
 }
-const emp:Employee = {
-    name:"ACLL",
-    salary:1234567890
-}
+const employee: Employee = { name: "Grace", salary: 120_000 };
 
-//interface of functions
 interface Add {
-    (a:number,b:number) :number;
+  (a: number, b: number): number;
 }
 const add: Add = (a,b) => a + b;
 
-//interface of class
 interface Animal{
-    makeSound():void;
+  makeSound(): void;
 }
 
-class Dog implements Animal{
-    makeSound(): void {
-        console.log("woof!")
-    }
+class Dog implements Animal {
+  makeSound(): void {
+    console.log("Woof!");
+  }
 }
+
+console.log(user, employee, add(2, 3));
+new Dog().makeSound();
