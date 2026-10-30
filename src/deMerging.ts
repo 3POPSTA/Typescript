@@ -20,6 +20,7 @@ interface Person {
 // email: string;
 // }
 
+
 const person: Person = {
   name: "John",
   age: 30,

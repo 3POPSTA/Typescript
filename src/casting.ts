@@ -8,3 +8,7 @@ if (typeof firstValue === "string") {
 // The `as` syntax is the preferred assertion style in TypeScript.
 const secondValue: unknown = "zuck";
 console.log((secondValue as string).length);
+
+// Angle-bracket assertions are another option in .ts files.
+const thirdValue: unknown = "zuck";
+console.log((<string>thirdValue).length);

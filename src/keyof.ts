@@ -14,7 +14,6 @@ function getProperty<ObjectType, Key extends keyof ObjectType>(
 ): ObjectType[Key] {
   return object[key];
 }
-
 console.log(getProperty(alice, "name"));
 
 type StringMap = Record<string, unknown>;
